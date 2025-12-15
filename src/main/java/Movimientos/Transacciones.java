@@ -6,6 +6,7 @@ package Movimientos;
 
 import Presentacion.MenuPrincipal;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.time.LocalDate;
@@ -18,6 +19,8 @@ import javax.swing.table.DefaultTableModel;
  * @author CRISTAL ORTEGA
  */
 public class Transacciones extends javax.swing.JFrame {
+    
+    private boolean cabeceraExiste = false;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Transacciones.class.getName());
 
@@ -203,6 +206,11 @@ public class Transacciones extends javax.swing.JFrame {
         DetalleTransaccion.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
         txtNumCuenta.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+        txtNumCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumCuentaActionPerformed(evt);
+            }
+        });
         DetalleTransaccion.add(txtNumCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 100, -1));
 
         tblDetalle2.setFont(new java.awt.Font("Book Antiqua", 1, 12)); // NOI18N
@@ -376,8 +384,12 @@ public class Transacciones extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
- if (txtDescripcionCuenta.getText().isEmpty()) {
+ if (txtNumCuenta.getText().isEmpty()) {
         JOptionPane.showMessageDialog(this, "Digite la cuenta");
+        return;
+    }
+  if (txtDescripcion.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Debe colocar una descripcion");
         return;
     }
 
@@ -385,6 +397,8 @@ public class Transacciones extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Digite débito o crédito");
         return;
     }
+     
+
 
     if (!txtDebito.getText().isEmpty() && !txtCredito.getText().isEmpty()) {
         JOptionPane.showMessageDialog(this, "Solo puede usar débito o crédito");
@@ -411,7 +425,7 @@ public class Transacciones extends javax.swing.JFrame {
         while ((linea = br.readLine()) != null) {
             String[] datos = linea.split("\\|");
 
-            if (datos[0].equals(txtDescripcionCuenta.getText())) {
+            if (datos[0].equals(txtNumCuenta.getText())) {
 
                 if (!datos[3].equals("DETALLE")) {
                     JOptionPane.showMessageDialog(this,
@@ -427,7 +441,7 @@ public class Transacciones extends javax.swing.JFrame {
                     return false;
                 }
 
-                txtDescripcion.setText(datos[2]);
+                txtDescripcionCuenta.setText(datos[2]);
                 br.close();
                 return true;
             }
@@ -451,7 +465,7 @@ public class Transacciones extends javax.swing.JFrame {
     String credito = txtCredito.getText().isEmpty() ? "0" : txtCredito.getText();
 
     modelo.addRow(new Object[]{
-        txtDescripcionCuenta.getText(),
+        txtNumCuenta.getText(),
         txtDescripcion.getText(),
         debito,
         credito
@@ -466,7 +480,10 @@ public class Transacciones extends javax.swing.JFrame {
 } 
     
     private void txtNroDocuFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNroDocuFocusLost
-      try {
+     
+    cabeceraExiste = false;
+
+    try {
         BufferedReader br = new BufferedReader(
                 new FileReader("CabeceraTransaccionContable.txt"));
         String linea;
@@ -476,11 +493,13 @@ public class Transacciones extends javax.swing.JFrame {
 
             if (datos[0].equals(txtNroDocu.getText())) {
 
-                if (datos[4].equals("ACTUALIZADA")) {
+                cabeceraExiste = true;
+
+                if (datos[5].equals("ACTUALIZADA")) {
                     JOptionPane.showMessageDialog(this,
                             "La transacción ya fue actualizada");
                     br.close();
-                    return; // solo salir del evento
+                    return;
                 } else {
                     cargarCabecera(datos);
                     br.close();
@@ -489,12 +508,11 @@ public class Transacciones extends javax.swing.JFrame {
             }
         }
 
-        br.close(); // no existe → se puede crear
+        br.close();
 
     } catch (Exception e) {
         JOptionPane.showMessageDialog(this, "Error leyendo cabecera");
     }
-     
     }//GEN-LAST:event_txtNroDocuFocusLost
 
     private void txtCreditoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCreditoKeyReleased
@@ -516,76 +534,102 @@ public class Transacciones extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDebitoKeyReleased
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-       
-    if (tblDetalle2.getRowCount() < 2) {
+   if (tblDetalle2.getRowCount() == 0) {
+        JOptionPane.showMessageDialog(this,
+                "Debe agregar al menos un detalle");
+        return;
+    }
+
+    double totalDebito = 0;
+    double totalCredito = 0;
+
+    for (int i = 0; i < tblDetalle2.getRowCount(); i++) {
+        totalDebito += Double.parseDouble(tblDetalle2.getValueAt(i, 2).toString());
+        totalCredito += Double.parseDouble(tblDetalle2.getValueAt(i, 3).toString());
+    }
+
+    if (totalDebito == 0 || totalCredito == 0) {
         JOptionPane.showMessageDialog(this,
                 "Debe existir al menos un débito y un crédito");
         return;
     }
 
-   
-    if (!txtTotalDebito.getText().equals(txtTotalCredito.getText())) {
+    if (totalDebito != totalCredito) {
         JOptionPane.showMessageDialog(this,
-                "El total del débito debe ser igual al total del crédito");
+                "Los débitos y créditos deben ser iguales");
         return;
     }
 
-    guardarCabecera();
-    guardarDetalle();
+    try {
 
-    JOptionPane.showMessageDialog(this,
-            "Transacción guardada correctamente");
+        // SOLO guarda cabecera si NO existe
+        if (!cabeceraExiste) {
+            FileWriter fwCab = new FileWriter("CabeceraTransaccionContable.txt", true);
+
+            fwCab.write(
+                    txtNroDocu.getText() + "|" +
+                    txtFecha.getText() + "|" +
+                    cmbTipoDocu.getSelectedItem() + "|" +
+                    txtDescripcion.getText() + "|" +
+                    txtMonto.getText() + "|" +
+                    "PENDIENTE\n"
+            );
+            fwCab.close();
+        }
+
+        FileWriter fwDet = new FileWriter("Detalle.txt", true);
+
+        for (int i = 0; i < tblDetalle2.getRowCount(); i++) {
+            fwDet.write(
+                    txtNroDocu.getText() + "|" +
+                    tblDetalle2.getValueAt(i, 0) + "|" +
+                    tblDetalle2.getValueAt(i, 1) + "|" +
+                    tblDetalle2.getValueAt(i, 2) + "|" +
+                    tblDetalle2.getValueAt(i, 3) + "\n"
+            );
+        }
+
+        fwDet.close();
+
+        actualizarCatalogoCuenta();
+        actualizarEstadoCabecera();
+
+        JOptionPane.showMessageDialog(this,
+                "Transacción guardada correctamente");
+
+        limpiarCampos();
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this,
+                "Error al guardar la transacción");
+    }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
       cargarFecha();
+     
     }//GEN-LAST:event_formWindowOpened
 
-    private void guardarCabecera() {
+    private void txtNumCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumCuentaActionPerformed
+       
+    }//GEN-LAST:event_txtNumCuentaActionPerformed
 
-    try {
-        FileWriter fw = new FileWriter(
-                "CabeceraTransaccionContable.txt", true);
+    public void limpiarCampos(){
+        txtNumCuenta.setText("");
+         txtNroDocu.setText("");
+    txtMonto.setText("");
+    txtTotalDebito.setText("");
+    txtTotalCredito.setText("");
+    txtBalance.setText("");
+cabeceraExiste = false;
+txtDescripcionCuenta.setText("");
+txtDescripcion.setText("");
 
-        fw.write(
-            txtNroDocu.getText() + "|" +
-            cmbTipoDocu.getSelectedItem() + "|" +
-            txtFecha.getText() + "|" +
-            txtTotalDebito.getText() + "|PENDIENTE\n"
-        );
-
-        fw.close();
-
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this,
-                "Error guardando la cabecera");
+    DefaultTableModel modelo =
+            (DefaultTableModel) tblDetalle2.getModel();
+    modelo.setRowCount(0);
     }
-}
-    
-    private void guardarDetalle() {
 
-    try {
-        FileWriter fw = new FileWriter("Transaccion.txt", true);
-
-        for (int i = 0; i < tblDetalle2.getRowCount(); i++) {
-
-            fw.write(
-                txtNroDocu.getText() + "|" +
-                tblDetalle2.getValueAt(i, 0) + "|" +
-                tblDetalle2.getValueAt(i, 1) + "|" +
-                tblDetalle2.getValueAt(i, 2) + "|" +
-                tblDetalle2.getValueAt(i, 3) + "\n"
-            );
-        }
-
-        fw.close();
-
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this,
-                "Error guardando el detalle");
-    }
-}
-    
     private void calcularTotales() {
 
     double totalDebito = 0;
@@ -607,13 +651,15 @@ public class Transacciones extends javax.swing.JFrame {
     txtTotalCredito.setText(String.valueOf(totalCredito));
 
     txtBalance.setText(String.valueOf(totalDebito - totalCredito));
+     txtMonto.setText(txtTotalDebito.getText());
+    
 }
     
     
     private void cargarCabecera(String[] datos) {
-    cmbTipoDocu.setSelectedItem(datos[1]);
-    txtFecha.setText(datos[2]);
-    txtMonto.setText(datos[3]);
+     cmbTipoDocu.setSelectedItem(datos[2]);
+    txtFecha.setText(datos[1]);
+    txtMonto.setText(datos[4]);
 }
     /**
      * @param args the command line arguments
@@ -648,6 +694,124 @@ public class Transacciones extends javax.swing.JFrame {
 
   
     txtFecha.setEnabled(false);
+
+}
+      private void actualizarCatalogoCuenta() {
+
+    try {
+
+        BufferedReader lectorCatalogo =
+                new BufferedReader(new FileReader("CatalogoCuenta.txt"));
+
+        FileWriter escritorTemporal =
+                new FileWriter("CatalogoTemp.txt");
+
+        String lineaCatalogo;
+
+        while ((lineaCatalogo = lectorCatalogo.readLine()) != null) {
+
+            String[] datosCuenta = lineaCatalogo.split("\\|");
+
+            String numeroCuentaCatalogo = datosCuenta[0];
+
+            // recorrer cada movimiento de la transacción
+            for (int i = 0; i < tblDetalle2.getRowCount(); i++) {
+
+                String numeroCuentaMovimiento =
+                        tblDetalle2.getValueAt(i, 0).toString();
+
+                if (numeroCuentaCatalogo.equals(numeroCuentaMovimiento)) {
+
+                    double debitoCatalogo =
+                            Double.parseDouble(datosCuenta[5]);
+
+                    double creditoCatalogo =
+                            Double.parseDouble(datosCuenta[7]);
+
+                    double debitoMovimiento =
+                            Double.parseDouble(
+                                    tblDetalle2.getValueAt(i, 2).toString());
+
+                    double creditoMovimiento =
+                            Double.parseDouble(
+                                    tblDetalle2.getValueAt(i, 3).toString());
+
+                    // actualizar valores
+                    debitoCatalogo = debitoCatalogo + debitoMovimiento;
+                    creditoCatalogo = creditoCatalogo + creditoMovimiento;
+
+                    datosCuenta[5] = String.valueOf(debitoCatalogo);
+                    datosCuenta[7] = String.valueOf(creditoCatalogo);
+                }
+            }
+
+            // volver a escribir la cuenta (actualizada o no)
+            escritorTemporal.write(
+                    datosCuenta[0] + "|" +
+                    datosCuenta[1] + "|" +
+                    datosCuenta[2] + "|" +
+                    datosCuenta[3] + "|" +
+                    datosCuenta[4] + "|" +
+                    datosCuenta[5] + "|" +
+                    datosCuenta[6] + "|" +
+                    datosCuenta[7] + "\n");
+        }
+
+        lectorCatalogo.close();
+        escritorTemporal.close();
+
+        new File("CatalogoCuenta.txt").delete();
+        new File("CatalogoTemp.txt")
+                .renameTo(new File("CatalogoCuenta.txt"));
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this,
+                "Error al actualizar el catálogo de cuentas");
+    }
+  }  
+    private void actualizarEstadoCabecera() {
+
+    try {
+
+        BufferedReader lector =
+                new BufferedReader(new FileReader("CabeceraTransaccionContable.txt"));
+
+        FileWriter escritorTemp =
+                new FileWriter("CabeceraTemp.txt");
+
+        String linea;
+
+        while ((linea = lector.readLine()) != null) {
+
+            String[] datos = linea.split("\\|");
+
+            // datos[0] = No. Documento
+            // datos[5] = Estado
+
+            if (datos[0].equals(txtNroDocu.getText())) {
+                datos[5] = "ACTUALIZADA";
+            }
+
+            escritorTemp.write(
+                    datos[0] + "|" +
+                    datos[1] + "|" +
+                    datos[2] + "|" +
+                    datos[3] + "|" +
+                    datos[4] + "|" +
+                    datos[5] + "\n");
+        }
+
+        lector.close();
+        escritorTemp.close();
+
+        new File("CabeceraTransaccionContable.txt").delete();
+        new File("CabeceraTemp.txt")
+                .renameTo(new File("CabeceraTransaccionContable.txt"));
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this,
+                "Error al actualizar estado de la cabecera");
+    }
 
 }
 

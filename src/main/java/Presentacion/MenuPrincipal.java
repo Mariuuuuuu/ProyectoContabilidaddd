@@ -6,6 +6,7 @@ package Presentacion;
 
 import Consultas.BalanzaComprobacion;
 import Consultas.BalanzaGeneral;
+import Consultas.CatalagoCuenta;
 import Consultas.EstadoGananciasPerdidas;
 import Consultas.TransaccionesPorFecha;
 import Mantenimientos.MantCatalogoDeCuenta;
@@ -173,7 +174,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BalanzaGeneralActionPerformed
 
     private void CatalogoCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CatalogoCuentaActionPerformed
-       CatalogoCuenta CC=new CatalogoCuenta();
+       CatalagoCuenta CC=new CatalagoCuenta();
       CC.setVisible(true);
       this.dispose();
     }//GEN-LAST:event_CatalogoCuentaActionPerformed

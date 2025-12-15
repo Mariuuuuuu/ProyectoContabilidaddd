@@ -2,6 +2,7 @@ Movimientos\Transacciones$4.class
 Mantenimientos\MantUsuario$9.class
 Mantenimientos\MantUsuario$2.class
 Mantenimientos\MantCatalogoDeCuenta$5.class
+Consultas\CatalagoCuenta$3.class
 Presentacion\MenuPrincipal$1.class
 Presentacion\MenuPrincipal$4.class
 Consultas\BalanzaGeneral.class
@@ -12,6 +13,7 @@ Utilidades\Sesion.class
 Movimientos\Transacciones$7.class
 Mantenimientos\MantUsuario.class
 Presentacion\MenuPrincipal$7.class
+Consultas\CatalagoCuenta$2.class
 Consultas\CatalagoCuenta.class
 Presentacion\MenuPrincipal$5.class
 Consultas\TransaccionesPorFecha.class
@@ -26,6 +28,7 @@ Presentacion\CatalogoCuenta.class
 Presentacion\Login$4.class
 Consultas\EstadoGananciasPerdidas.class
 Movimientos\Transacciones$6.class
+Consultas\CatalagoCuenta$1.class
 Presentacion\MenuPrincipal$6.class
 Movimientos\Transacciones$9.class
 Mantenimientos\MantUsuario$11.class
@@ -42,6 +45,7 @@ Mantenimientos\MantUsuario$10.class
 Movimientos\Transacciones$5.class
 Mantenimientos\MantCatalogoDeCuenta.class
 Mantenimientos\MantUsuario$1.class
+Movimientos\Transacciones$10.class
 com\mycompany\proyectocontabilidad\ProyectoContabilidad.class
 Movimientos\Transacciones$8.class
 Mantenimientos\MantCatalogoDeCuenta$6.class
@@ -51,4 +55,5 @@ Presentacion\Login$2.class
 Mantenimientos\MantUsuario$4.class
 Mantenimientos\MantUsuario$7.class
 Mantenimientos\MantCatalogoDeCuenta$3.class
+Consultas\CatalagoCuenta$4.class
 Presentacion\MenuPrincipal$3.class
