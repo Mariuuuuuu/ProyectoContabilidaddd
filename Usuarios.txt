@@ -1,4 +1,4 @@
-Cristal;1508;Administrador;Cristal;Ortega;cristalortega@gmail.com
-Marlom09;563243;Administrador;Marlom;Rodriguez;marlomrodriguez@gmail,com
-Melosososo;1311;Administrador;Mia;Melo;miamelo@gmail.com
-crso;73793;Normal;djkdkda;akjdhkajdkda;adnkdabkjdn
+Cristal;1508;0;Cristal;Ortega;cristalortega@gmail.com
+Marlom09;563243;1;Marlom;Rodriguez;marlomrodriguez@gmail,com
+Melosososo;1311;1;Mia;Melo;miamelo@gmail.com
+Alba;0509;0;Alba Rosa;Marte;albamarte79@gnail.com

@@ -90,9 +90,7 @@ public class MantCatalogoDeCuenta extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1000, 600));
         setMinimumSize(new java.awt.Dimension(1000, 600));
-        setPreferredSize(new java.awt.Dimension(1000, 600));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -173,6 +171,11 @@ public class MantCatalogoDeCuenta extends javax.swing.JFrame {
 
         txtFecha.setEditable(false);
         txtFecha.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+        txtFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 158, 120, -1));
 
         jLabel15.setFont(new java.awt.Font("Book Antiqua", 1, 14)); // NOI18N
@@ -269,7 +272,9 @@ public class MantCatalogoDeCuenta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        // TODO add your handling code here:
+       MenuPrincipal MP=new MenuPrincipal();
+       MP.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -396,6 +401,10 @@ try {
             "Error al eliminar cuenta");
 }
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaActionPerformed
 
     /**
      * @param args the command line arguments

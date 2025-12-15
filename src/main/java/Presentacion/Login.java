@@ -56,7 +56,7 @@ public class Login extends javax.swing.JFrame{
         jPanel1.setMaximumSize(new java.awt.Dimension(1000, 600));
         jPanel1.setMinimumSize(new java.awt.Dimension(1000, 600));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 600));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 170, 940, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-180, 0, 880, 620));
 
         PanelIngresar.setBackground(new java.awt.Color(255, 255, 255));
         PanelIngresar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.lightGray, null, null));
@@ -115,7 +115,7 @@ public class Login extends javax.swing.JFrame{
         });
         PanelIngresar.add(MostrarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, -1, -1));
 
-        getContentPane().add(PanelIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 80, -1, -1));
+        getContentPane().add(PanelIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 0, 340, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

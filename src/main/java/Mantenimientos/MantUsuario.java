@@ -4,6 +4,7 @@
  */
 package Mantenimientos;
 
+import Presentacion.MenuPrincipal;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -16,7 +17,10 @@ import javax.swing.JOptionPane;
  *
  * @author CRISTAL ORTEGA
  */
+
+
 public class MantUsuario extends javax.swing.JFrame {
+     int nivelTemp;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MantUsuario.class.getName());
 
@@ -29,6 +33,16 @@ public class MantUsuario extends javax.swing.JFrame {
       
       
 }
+    
+    public void nivel(){
+       
+          
+          if(txtNivelAcceso.getSelectedItem().toString().equals("Normal")) {
+    nivelTemp = 1;
+} else {
+    nivelTemp = 0;
+}
+    }
     
 private File getArchivoUsuarios() throws Exception {
     File archivo = new File("Usuarios.txt");
@@ -252,6 +266,13 @@ private File getArchivoUsuarios() throws Exception {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
      
+        int nivelTemp;
+        if(txtNivelAcceso.getSelectedItem().toString().equals("Normal")){
+            nivelTemp=1;
+        }
+        else{
+            nivelTemp=0;
+        }
         if (txtUsuario.getText().trim().isEmpty() || txtContraseña.getText().trim().isEmpty() || txtCorreo.getText().trim().isEmpty() || txtApellido.getText().trim().isEmpty() || txtNombre.getText().trim().isEmpty()) {
     JOptionPane.showMessageDialog(this, "Complete todos los campos");
     return;
@@ -277,10 +298,12 @@ private File getArchivoUsuarios() throws Exception {
 
         FileWriter fw = new FileWriter(archivo, true);
 
+        
+        nivel();
         fw.write(
             txtUsuario.getText() + ";" +
             txtContraseña.getText() + ";" +
-            txtNivelAcceso.getSelectedItem() + ";" +
+            nivelTemp + ";" +
             txtNombre.getText() + ";" +
             txtApellido.getText() + ";" +
             txtCorreo.getText() + "\n"
@@ -312,12 +335,12 @@ private File getArchivoUsuarios() throws Exception {
         while ((linea = br.readLine()) != null) {
 
             String[] datos = linea.split(";");
-
+nivel();
            
             if (datos[0].equals(usuarioBuscado)) {
                 String nuevaLinea = txtUsuario.getText() + ";" +
                                     txtContraseña.getText() + ";" +
-                                    txtNivelAcceso.getSelectedItem().toString() + ";" +
+                                    nivelTemp + ";" +
                                     txtNombre.getText() + ";" +
                                     txtApellido.getText() + ";" +
                                     txtCorreo.getText();
@@ -469,7 +492,9 @@ private File getArchivoUsuarios() throws Exception {
     }//GEN-LAST:event_MostrarContraseñaActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        // TODO add your handling code here:
+      MenuPrincipal MP=new MenuPrincipal();
+      MP.setVisible(true);
+      this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     /**

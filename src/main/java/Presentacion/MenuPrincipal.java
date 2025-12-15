@@ -4,6 +4,13 @@
  */
 package Presentacion;
 
+import Consultas.BalanzaComprobacion;
+import Consultas.BalanzaGeneral;
+import Consultas.EstadoGananciasPerdidas;
+import Consultas.TransaccionesPorFecha;
+import Mantenimientos.MantCatalogoDeCuenta;
+import Mantenimientos.MantUsuario;
+import Movimientos.Transacciones;
 import Utilidades.Sesion;
 
 /**
@@ -75,6 +82,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Consultas.setText("Consultas");
 
         BalanzaGeneral.setText("Balanza general");
+        BalanzaGeneral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BalanzaGeneralActionPerformed(evt);
+            }
+        });
         Consultas.add(BalanzaGeneral);
 
         BalanzaComprobacion.setText("Balanza de comprobación");
@@ -86,12 +98,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Consultas.add(BalanzaComprobacion);
 
         CatalogoCuenta.setText("Catálogo de cuenta");
+        CatalogoCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CatalogoCuentaActionPerformed(evt);
+            }
+        });
         Consultas.add(CatalogoCuenta);
 
         TransaccionesPorFecha.setText("Transacciones por fecha");
+        TransaccionesPorFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TransaccionesPorFechaActionPerformed(evt);
+            }
+        });
         Consultas.add(TransaccionesPorFecha);
 
         EstadoGananciasPerdidas.setText("Estado de ganancias y perdidas");
+        EstadoGananciasPerdidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EstadoGananciasPerdidasActionPerformed(evt);
+            }
+        });
         Consultas.add(EstadoGananciasPerdidas);
 
         jMenuBar2.add(Consultas);
@@ -99,6 +126,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Movimientos.setText("Movimientos");
 
         Transacciones.setText("Transacciones");
+        Transacciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TransaccionesActionPerformed(evt);
+            }
+        });
         Movimientos.add(Transacciones);
 
         jMenuBar2.add(Movimientos);
@@ -106,9 +138,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Mantenimientos.setText("Mantenimientos");
 
         Usuarios.setText("De usuarios");
+        Usuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UsuariosActionPerformed(evt);
+            }
+        });
         Mantenimientos.add(Usuarios);
 
         MantCatalogoCuenta.setText("De catálogo de cuenta");
+        MantCatalogoCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MantCatalogoCuentaActionPerformed(evt);
+            }
+        });
         Mantenimientos.add(MantCatalogoCuenta);
 
         jMenuBar2.add(Mantenimientos);
@@ -119,8 +161,53 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BalanzaComprobacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BalanzaComprobacionActionPerformed
-        // TODO add your handling code here:
+       BalanzaComprobacion BC=new BalanzaComprobacion();
+       BC.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_BalanzaComprobacionActionPerformed
+
+    private void BalanzaGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BalanzaGeneralActionPerformed
+       BalanzaGeneral BG= new BalanzaGeneral();
+       BG.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_BalanzaGeneralActionPerformed
+
+    private void CatalogoCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CatalogoCuentaActionPerformed
+       CatalogoCuenta CC=new CatalogoCuenta();
+      CC.setVisible(true);
+      this.dispose();
+    }//GEN-LAST:event_CatalogoCuentaActionPerformed
+
+    private void TransaccionesPorFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransaccionesPorFechaActionPerformed
+       TransaccionesPorFecha TPF=new TransaccionesPorFecha();
+       TPF.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_TransaccionesPorFechaActionPerformed
+
+    private void EstadoGananciasPerdidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EstadoGananciasPerdidasActionPerformed
+    EstadoGananciasPerdidas EGP=new EstadoGananciasPerdidas();
+    EGP.setVisible(true);
+    this.dispose();
+    }//GEN-LAST:event_EstadoGananciasPerdidasActionPerformed
+
+    private void TransaccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransaccionesActionPerformed
+      Transacciones T=new Transacciones();
+      T.setVisible(true);
+      this.dispose();
+    }//GEN-LAST:event_TransaccionesActionPerformed
+
+    private void UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuariosActionPerformed
+       MantUsuario MU= new MantUsuario();
+       MU.setVisible(true);
+       this.dispose();
+               
+    }//GEN-LAST:event_UsuariosActionPerformed
+
+    private void MantCatalogoCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantCatalogoCuentaActionPerformed
+       MantCatalogoDeCuenta MCC=new MantCatalogoDeCuenta();
+       MCC.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_MantCatalogoCuentaActionPerformed
 
     /**
      * @param args the command line arguments

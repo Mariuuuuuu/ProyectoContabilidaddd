@@ -4,9 +4,12 @@
  */
 package Movimientos;
 
+import Presentacion.MenuPrincipal;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,6 +25,7 @@ public class Transacciones extends javax.swing.JFrame {
      * Creates new form Transacciones
      */
     public Transacciones() {
+        setLocationRelativeTo(null);
         initComponents();
     }
     
@@ -53,11 +57,13 @@ public class Transacciones extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtCredito = new javax.swing.JTextField();
         txtDebito = new javax.swing.JTextField();
-        txtNumCuenta = new javax.swing.JTextField();
+        txtDescripcionCuenta = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         txtDescripcion = new javax.swing.JTextArea();
+        jLabel13 = new javax.swing.JLabel();
+        txtNumCuenta = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblDetalle2 = new javax.swing.JTable();
         jLabel10 = new javax.swing.JLabel();
@@ -77,6 +83,11 @@ public class Transacciones extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1010, 600));
         setPreferredSize(new java.awt.Dimension(1010, 600));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -128,12 +139,12 @@ public class Transacciones extends javax.swing.JFrame {
         DetalleTransaccion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Book Antiqua", 1, 14)); // NOI18N
-        jLabel5.setText("No. Cuenta");
-        DetalleTransaccion.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jLabel5.setText("Descripción");
+        DetalleTransaccion.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Book Antiqua", 1, 14)); // NOI18N
         jLabel6.setText("Descripción");
-        DetalleTransaccion.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        DetalleTransaccion.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Book Antiqua", 1, 14)); // NOI18N
         jLabel7.setText("Crédito");
@@ -160,8 +171,8 @@ public class Transacciones extends javax.swing.JFrame {
         });
         DetalleTransaccion.add(txtDebito, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, 110, -1));
 
-        txtNumCuenta.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
-        DetalleTransaccion.add(txtNumCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 100, -1));
+        txtDescripcionCuenta.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+        DetalleTransaccion.add(txtDescripcionCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 190, -1));
 
         btnAgregar.setFont(new java.awt.Font("Book Antiqua", 1, 12)); // NOI18N
         btnAgregar.setText("Agregar");
@@ -170,7 +181,7 @@ public class Transacciones extends javax.swing.JFrame {
                 btnAgregarActionPerformed(evt);
             }
         });
-        DetalleTransaccion.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 81, 34));
+        DetalleTransaccion.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 81, 34));
 
         btnEliminar.setFont(new java.awt.Font("Book Antiqua", 1, 12)); // NOI18N
         btnEliminar.setText("Eliminar");
@@ -179,13 +190,20 @@ public class Transacciones extends javax.swing.JFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
-        DetalleTransaccion.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, -1, 34));
+        DetalleTransaccion.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, -1, 34));
 
         txtDescripcion.setColumns(20);
         txtDescripcion.setRows(5);
         jScrollPane6.setViewportView(txtDescripcion);
 
-        DetalleTransaccion.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 220, 60));
+        DetalleTransaccion.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 220, 60));
+
+        jLabel13.setFont(new java.awt.Font("Book Antiqua", 1, 14)); // NOI18N
+        jLabel13.setText("No. Cuenta");
+        DetalleTransaccion.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+
+        txtNumCuenta.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+        DetalleTransaccion.add(txtNumCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 100, -1));
 
         tblDetalle2.setFont(new java.awt.Font("Book Antiqua", 1, 12)); // NOI18N
         tblDetalle2.setModel(new javax.swing.table.DefaultTableModel(
@@ -308,10 +326,10 @@ public class Transacciones extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(CabeceraTransaccionContable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DetalleTransaccion, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(DetalleTransaccion, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -326,7 +344,7 @@ public class Transacciones extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1010, 600));
@@ -335,7 +353,9 @@ public class Transacciones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        // TODO add your handling code here:
+       MenuPrincipal MP=new MenuPrincipal();
+       MP.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -356,7 +376,7 @@ public class Transacciones extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
- if (txtNumCuenta.getText().isEmpty()) {
+ if (txtDescripcionCuenta.getText().isEmpty()) {
         JOptionPane.showMessageDialog(this, "Digite la cuenta");
         return;
     }
@@ -391,7 +411,7 @@ public class Transacciones extends javax.swing.JFrame {
         while ((linea = br.readLine()) != null) {
             String[] datos = linea.split("\\|");
 
-            if (datos[0].equals(txtNumCuenta.getText())) {
+            if (datos[0].equals(txtDescripcionCuenta.getText())) {
 
                 if (!datos[3].equals("DETALLE")) {
                     JOptionPane.showMessageDialog(this,
@@ -431,7 +451,7 @@ public class Transacciones extends javax.swing.JFrame {
     String credito = txtCredito.getText().isEmpty() ? "0" : txtCredito.getText();
 
     modelo.addRow(new Object[]{
-        txtNumCuenta.getText(),
+        txtDescripcionCuenta.getText(),
         txtDescripcion.getText(),
         debito,
         credito
@@ -439,7 +459,7 @@ public class Transacciones extends javax.swing.JFrame {
 }
     
    private void limpiarDetalle() {
-    txtNumCuenta.setText("");
+    txtDescripcionCuenta.setText("");
     txtDescripcion.setText("");
     txtDebito.setText("");
     txtCredito.setText("");
@@ -516,6 +536,10 @@ public class Transacciones extends javax.swing.JFrame {
     JOptionPane.showMessageDialog(this,
             "Transacción guardada correctamente");
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+      cargarFecha();
+    }//GEN-LAST:event_formWindowOpened
 
     private void guardarCabecera() {
 
@@ -615,6 +639,17 @@ public class Transacciones extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Transacciones().setVisible(true));
     }
+      private void cargarFecha() {
+
+    DateTimeFormatter fFecha =
+            DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    txtFecha.setText(
+            LocalDate.now().format(fFecha));
+
+  
+    txtFecha.setEnabled(false);
+
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CabeceraTransaccionContable;
@@ -628,6 +663,7 @@ public class Transacciones extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -646,6 +682,7 @@ public class Transacciones extends javax.swing.JFrame {
     private javax.swing.JTextField txtCredito;
     private javax.swing.JTextField txtDebito;
     private javax.swing.JTextArea txtDescripcion;
+    private javax.swing.JTextField txtDescripcionCuenta;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtMonto;
     private javax.swing.JTextField txtNroDocu;
