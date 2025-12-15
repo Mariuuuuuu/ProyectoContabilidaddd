@@ -4,6 +4,7 @@
  */
 package Presentacion;
 
+import Utilidades.Sesion;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -166,10 +167,10 @@ public class Login extends javax.swing.JFrame{
                         encontrado = true;
 
                         JOptionPane.showMessageDialog(this, "Bienvenido/a " + user);
+             Sesion.tipoUsuario = tipo;
 
-                        MenuPrincipal menu = new MenuPrincipal(tipo); //para guardar el nivel de usuario y asi abrir el menu
-                        menu.setVisible(true);
-
+           MenuPrincipal menu = new MenuPrincipal();
+          menu.setVisible(true);
                         this.dispose();
                         break;
                     }

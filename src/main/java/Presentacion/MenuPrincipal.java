@@ -4,6 +4,8 @@
  */
 package Presentacion;
 
+import Utilidades.Sesion;
+
 /**
  *
  * @author CRISTAL ORTEGA
@@ -15,14 +17,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form MenuPrincipal
      */
-    public MenuPrincipal(String tipoUsuario) {
+    public MenuPrincipal() {
     initComponents();
     setLocationRelativeTo(null);
 
-    if(tipoUsuario.equals("0")) {
-       
+    if (Sesion.tipoUsuario.equals("0")) {
+        // administrador
+        // todo habilitado
     } else {
-       
+        // usuario normal
+       Usuarios.setEnabled(false);
+        MantCatalogoCuenta.setEnabled(false);
     }
     }
 
@@ -36,19 +41,86 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        Consultas = new javax.swing.JMenu();
+        BalanzaGeneral = new javax.swing.JMenuItem();
+        BalanzaComprobacion = new javax.swing.JMenuItem();
+        CatalogoCuenta = new javax.swing.JMenuItem();
+        TransaccionesPorFecha = new javax.swing.JMenuItem();
+        EstadoGananciasPerdidas = new javax.swing.JMenuItem();
+        Movimientos = new javax.swing.JMenu();
+        Transacciones = new javax.swing.JMenuItem();
+        Mantenimientos = new javax.swing.JMenu();
+        Usuarios = new javax.swing.JMenuItem();
+        MantCatalogoCuenta = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(962, 467));
+        setMaximumSize(new java.awt.Dimension(1010, 600));
         setResizable(false);
 
-        jPanel1.setMaximumSize(new java.awt.Dimension(962, 467));
-        jPanel1.setMinimumSize(new java.awt.Dimension(962, 467));
-        jPanel1.setPreferredSize(new java.awt.Dimension(962, 467));
+        jPanel1.setMaximumSize(new java.awt.Dimension(1010, 600));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1010, 600));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1010, 600));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setMaximumSize(new java.awt.Dimension(1010, 600));
+        jPanel2.setMinimumSize(new java.awt.Dimension(1010, 600));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1010, 600));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 640));
+
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+
+        Consultas.setText("Consultas");
+
+        BalanzaGeneral.setText("Balanza general");
+        Consultas.add(BalanzaGeneral);
+
+        BalanzaComprobacion.setText("Balanza de comprobación");
+        BalanzaComprobacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BalanzaComprobacionActionPerformed(evt);
+            }
+        });
+        Consultas.add(BalanzaComprobacion);
+
+        CatalogoCuenta.setText("Catálogo de cuenta");
+        Consultas.add(CatalogoCuenta);
+
+        TransaccionesPorFecha.setText("Transacciones por fecha");
+        Consultas.add(TransaccionesPorFecha);
+
+        EstadoGananciasPerdidas.setText("Estado de ganancias y perdidas");
+        Consultas.add(EstadoGananciasPerdidas);
+
+        jMenuBar2.add(Consultas);
+
+        Movimientos.setText("Movimientos");
+
+        Transacciones.setText("Transacciones");
+        Movimientos.add(Transacciones);
+
+        jMenuBar2.add(Movimientos);
+
+        Mantenimientos.setText("Mantenimientos");
+
+        Usuarios.setText("De usuarios");
+        Mantenimientos.add(Usuarios);
+
+        MantCatalogoCuenta.setText("De catálogo de cuenta");
+        Mantenimientos.add(MantCatalogoCuenta);
+
+        jMenuBar2.add(Mantenimientos);
+
+        setJMenuBar(jMenuBar2);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BalanzaComprobacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BalanzaComprobacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BalanzaComprobacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -75,6 +147,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem BalanzaComprobacion;
+    private javax.swing.JMenuItem BalanzaGeneral;
+    private javax.swing.JMenuItem CatalogoCuenta;
+    private javax.swing.JMenu Consultas;
+    private javax.swing.JMenuItem EstadoGananciasPerdidas;
+    private javax.swing.JMenuItem MantCatalogoCuenta;
+    private javax.swing.JMenu Mantenimientos;
+    private javax.swing.JMenu Movimientos;
+    private javax.swing.JMenuItem Transacciones;
+    private javax.swing.JMenuItem TransaccionesPorFecha;
+    private javax.swing.JMenuItem Usuarios;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
