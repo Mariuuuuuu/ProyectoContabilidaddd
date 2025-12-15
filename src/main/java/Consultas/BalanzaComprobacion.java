@@ -17,6 +17,7 @@ public class BalanzaComprobacion extends javax.swing.JFrame {
      */
     public BalanzaComprobacion() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

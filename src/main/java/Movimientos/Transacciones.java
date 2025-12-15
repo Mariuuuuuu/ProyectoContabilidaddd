@@ -28,8 +28,8 @@ public class Transacciones extends javax.swing.JFrame {
      * Creates new form Transacciones
      */
     public Transacciones() {
-        setLocationRelativeTo(null);
         initComponents();
+        setLocationRelativeTo(null);
     }
     
 
@@ -82,8 +82,10 @@ public class Transacciones extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
         setMaximumSize(new java.awt.Dimension(1010, 600));
         setMinimumSize(new java.awt.Dimension(1010, 600));
+        setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1010, 600));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {

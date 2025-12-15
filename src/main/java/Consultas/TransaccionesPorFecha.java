@@ -17,6 +17,7 @@ public class TransaccionesPorFecha extends javax.swing.JFrame {
      */
     public TransaccionesPorFecha() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
