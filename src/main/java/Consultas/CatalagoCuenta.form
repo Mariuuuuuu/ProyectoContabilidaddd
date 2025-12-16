@@ -102,7 +102,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Book Antiqua" size="24" style="3"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Consulta de cat&#xe1;logo de cuenta"/>
+                <Property name="text" type="java.lang.String" value="Cat&#xe1;logo de cuenta"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

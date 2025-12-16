@@ -84,7 +84,6 @@ public class MantCatalogoDeCuenta extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         txtDescripcion = new javax.swing.JTextField();
         cmbNivel = new javax.swing.JComboBox<>();
-        lblEstado = new javax.swing.JLabel();
         btnLimpiar3 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         btnSalir = new javax.swing.JButton();
@@ -242,12 +241,13 @@ public class MantCatalogoDeCuenta extends javax.swing.JFrame {
         cmbNivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", " " }));
         jPanel1.add(cmbNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 80, -1));
 
-        lblEstado.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
-        lblEstado.setText("estado");
-        jPanel1.add(lblEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, 110, 20));
-
         btnLimpiar3.setFont(new java.awt.Font("Book Antiqua", 1, 14)); // NOI18N
         btnLimpiar3.setText("Limpiar");
+        btnLimpiar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiar3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnLimpiar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 400, 120, 40));
 
         jPanel4.setBackground(new java.awt.Color(255, 189, 39));
@@ -406,6 +406,10 @@ try {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFechaActionPerformed
 
+    private void btnLimpiar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiar3ActionPerformed
+      limpiarCampos();
+    }//GEN-LAST:event_btnLimpiar3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -442,7 +446,7 @@ try {
     txtDebito.setText("0");
     txtCredito.setText("0");
     txtBalance.setText("0");
-    lblEstado.setText("");
+  
 }
 
     private void cargarFechaHora() {
@@ -488,7 +492,6 @@ try {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JLabel lblEstado;
     private javax.swing.JTextField txtBalance;
     private javax.swing.JTextField txtCredito;
     private javax.swing.JTextField txtCuentaPadre;

@@ -1,0 +1,8 @@
+1|11021|Banco Popular Dominicano|CAAMPROCK|0|200
+1|11021|Banco Popular Dominicano|Ballena|200|0
+2|11021|Banco Popular Dominicano|cmm|0|100
+2|11011|Caja chica|mnn|100|0
+3|11021|Banco Popular Dominicano|Cambio de gas|0|500
+3|11011|Caja chica|Electricidad|500|0
+4|11021|Banco Popular Dominicano|Camion|0|100
+4|11021|Banco Popular Dominicano|Camilla|100|0

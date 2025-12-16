@@ -5,6 +5,11 @@
 package Consultas;
 
 import Presentacion.MenuPrincipal;
+import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,6 +25,24 @@ public class TransaccionesPorFecha extends javax.swing.JFrame {
     public TransaccionesPorFecha() {
         initComponents();
         setLocationRelativeTo(null);
+     txtFechaBuscar.addFocusListener(new java.awt.event.FocusAdapter() {
+
+    @Override
+    public void focusGained(java.awt.event.FocusEvent e) {
+        if (txtFechaBuscar.getText().equals("Dia/Mes/Año")) {
+            txtFechaBuscar.setText("");
+            txtFechaBuscar.setForeground(Color.BLACK);
+        }
+    }
+
+    @Override
+    public void focusLost(java.awt.event.FocusEvent e) {
+        if (txtFechaBuscar.getText().trim().isEmpty()) {
+            txtFechaBuscar.setText("Dia/Mes/Año");
+            txtFechaBuscar.setForeground(Color.GRAY);
+        }
+    }
+});
     }
 
     /**
@@ -36,11 +59,21 @@ public class TransaccionesPorFecha extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        txtFechaBuscar = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        btnMostrarTodo = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblConsultaTransacciones = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
-        setMaximumSize(new java.awt.Dimension(1010, 600));
         setMinimumSize(new java.awt.Dimension(1010, 600));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMaximumSize(new java.awt.Dimension(1010, 600));
@@ -75,6 +108,54 @@ public class TransaccionesPorFecha extends javax.swing.JFrame {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1010, 10));
 
+        jLabel2.setFont(new java.awt.Font("Book Antiqua", 1, 14)); // NOI18N
+        jLabel2.setText("Ingrese la fecha");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
+
+        txtFechaBuscar.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+        jPanel1.add(txtFechaBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 160, -1));
+
+        btnBuscar.setFont(new java.awt.Font("Book Antiqua", 1, 12)); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, -1, -1));
+
+        btnMostrarTodo.setFont(new java.awt.Font("Book Antiqua", 1, 12)); // NOI18N
+        btnMostrarTodo.setText("Mostrar todo");
+        btnMostrarTodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarTodoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMostrarTodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 110, -1, -1));
+
+        tblConsultaTransacciones.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "No.Documento", "Fecha", "Tipo", "Descripción", "Monto", "Estado"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblConsultaTransacciones);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 167, 830, 330));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,7 +164,7 @@ public class TransaccionesPorFecha extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
 
         pack();
@@ -94,6 +175,82 @@ public class TransaccionesPorFecha extends javax.swing.JFrame {
         MP.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+    txtFechaBuscar.setText("Dia/Mes/Año");
+txtFechaBuscar.setForeground(Color.GRAY);
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnMostrarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTodoActionPerformed
+ DefaultTableModel modelo = (DefaultTableModel) tblConsultaTransacciones.getModel();
+    modelo.setRowCount(0); // Limpiamos la tabla antes de cargar
+
+    try (BufferedReader br = new BufferedReader(new FileReader("CabeceraTransaccionContable.txt"))) {
+        String linea;
+
+        while ((linea = br.readLine()) != null) {
+            String[] datos = linea.split("\\|");
+
+            modelo.addRow(new Object[]{
+                datos[0], // Nro Documento
+                datos[1], // Fecha
+                datos[2], // Tipo
+                datos[3], // Descripción
+                datos[4], // Monto
+                datos[5]  // Estado
+            });
+        }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error al cargar todas las transacciones");
+    }       
+    }//GEN-LAST:event_btnMostrarTodoActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+         String fechaBuscada = txtFechaBuscar.getText().trim();
+
+    if (fechaBuscada.isEmpty()) {
+        JOptionPane.showMessageDialog(this,
+                "Debe ingresar una fecha");
+        return;
+    }
+
+    // Validación de formato Dia/Mes/Año
+    if (!fechaBuscada.matches("\\d{2}/\\d{2}/\\d{4}")) {
+        JOptionPane.showMessageDialog(this,
+                "Formato de fecha inválido. El formato de fecha a usar es Dia/Mes/Año");
+        return;
+    }
+
+    DefaultTableModel modelo =
+            (DefaultTableModel) tblConsultaTransacciones.getModel();
+    modelo.setRowCount(0);
+
+    try (BufferedReader br = new BufferedReader(
+            new FileReader("CabeceraTransaccionContable.txt"))) {
+
+        String linea;
+
+        while ((linea = br.readLine()) != null) {
+            String[] datos = linea.split("\\|");
+
+            if (datos[1].equals(fechaBuscada)) {
+                modelo.addRow(new Object[]{
+                    datos[0],
+                    datos[1],
+                    datos[2],
+                    datos[3],
+                    datos[4],
+                    datos[5]
+                });
+            }
+        }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this,
+                "Error al consultar transacciones");
+    }
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,10 +278,16 @@ public class TransaccionesPorFecha extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnMostrarTodo;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblConsultaTransacciones;
+    private javax.swing.JTextField txtFechaBuscar;
     // End of variables declaration//GEN-END:variables
 }

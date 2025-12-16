@@ -1,8 +1,8 @@
-23|Pago ROsalina|General|1|0112|Activo|14/12/2025|00:45|0|0|0
-1|Activos|General|1||Activo|15/12/2025|01:48|0|0|0
-11|Activos circulantes|General|2|1|Activo|15/12/2025|01:49|0|0|0
-1101|Efectivo en caja|General|3|11|Activo|15/12/2025|01:49|0|0|0
-11011|Caja chica|Detalle|4|1101|Activo|15/12/2025|01:50|0|0|0
-1102|Efectivo en bancos|General|3|11|Activo|15/12/2025|01:50|0|0|0
-11021|Banco Popular Dominicano|Detalle|4|1102|Activo|15/12/2025|01:51|0|0|0
-11022|Banco BHD|Detalle|4|1102|Activo|15/12/2025|01:51|0|0|0
+23|Pago ROsalina|General|1|0112|Activo|14/12/2025|00:45|0.00|0.00|0.00
+1|Activos|General|1||Activo|15/12/2025|01:48|0.00|0.00|0.00
+11|Activos circulantes|General|2|1|Activo|15/12/2025|01:49|0.00|0.00|0.00
+1101|Efectivo en caja|General|3|11|Activo|15/12/2025|01:49|0.00|0.00|0.00
+11011|Caja chica|Detalle|4|1101|Activo|15/12/2025|01:50|2300.00|1000.00|1300.00
+1102|Efectivo en bancos|General|3|11|Activo|15/12/2025|01:50|0.00|0.00|0.00
+11021|Banco Popular Dominicano|Detalle|4|1102|Activo|15/12/2025|01:51|300.00|1600.00|-1300.00
+11022|Banco BHD|Detalle|4|1102|Activo|15/12/2025|01:51|0.00|0.00|0.00

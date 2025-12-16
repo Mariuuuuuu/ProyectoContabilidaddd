@@ -92,7 +92,6 @@ private File getArchivoUsuarios() throws Exception {
         Estado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1010, 600));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -126,7 +125,7 @@ private File getArchivoUsuarios() throws Exception {
         jLabel5.setText("Nombre");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, -1, -1));
 
-        txtApellido.setFont(new java.awt.Font("Book Antiqua", 2, 12)); // NOI18N
+        txtApellido.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
         txtApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApellidoActionPerformed(evt);
@@ -138,7 +137,7 @@ private File getArchivoUsuarios() throws Exception {
         jLabel6.setText("Apellido");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, -1, -1));
 
-        txtCorreo.setFont(new java.awt.Font("Book Antiqua", 2, 12)); // NOI18N
+        txtCorreo.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
         txtCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCorreoActionPerformed(evt);
@@ -417,7 +416,7 @@ nivel();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-  
+limpiarCampos();  
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
