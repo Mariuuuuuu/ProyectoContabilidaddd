@@ -614,9 +614,7 @@ totalCredito += Double.parseDouble(tblDetalle2.getValueAt(i, 4).toString());
 
         if (Math.abs(totalDebito - totalCredito) > 0.01) {
             JOptionPane.showMessageDialog(this,
-                    "Los débitos y créditos deben ser iguales\n" +
-                    "Débitos: " + totalDebito + "\n" +
-                    "Créditos: " + totalCredito);
+                    "Los débitos y créditos deben ser iguales");
             return;
         }
 
@@ -634,7 +632,7 @@ totalCredito += Double.parseDouble(tblDetalle2.getValueAt(i, 4).toString());
                        cmbTipoDocu.getSelectedItem().toString() + "|" +
                        descripcionCabecera + "|" +
                        txtMonto.getText() + "|" +
-                       "PENDIENTE\n"
+                       "PENDIENTE"
                 );
                 fwCab.close();
             } else {
@@ -691,7 +689,7 @@ totalCredito += Double.parseDouble(tblDetalle2.getValueAt(i, 4).toString());
         if (txtNroDocu.getText().trim().isEmpty() && tblDetalle2.getRowCount() > 0) {
             // Preguntar si desea cancelar
             SwingUtilities.invokeLater(() -> {
-                int respuesta = JOptionPane.showConfirmDialog(this,"Al borrar el número de documento se cancelará la transacción.\n" +
+                int respuesta = JOptionPane.showConfirmDialog(this,"Al borrar el número de documento se cancelará la transacción." +
                         "¿Desea continuar?",
                         "Cancelar transacción",
                         JOptionPane.YES_NO_OPTION,
