@@ -29,6 +29,7 @@ Movimientos\Transacciones$3.class
 Procesos\CierreDiarioPorFechas.class
 Mantenimientos\MantUsuario$5.class
 Utilidades\Base.class
+Mantenimientos\MantCatalogoDeCuenta$8.class
 Presentacion\Login$1.class
 Consultas\BalanzaGeneral$2.class
 Presentacion\MenuPrincipal$8.class

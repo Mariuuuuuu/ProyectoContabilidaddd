@@ -34,14 +34,17 @@ public class Login extends javax.swing.JFrame{
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         PanelIngresar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtIngresarUser = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         txtContrasenaUser = new javax.swing.JPasswordField();
         btnIngresar = new javax.swing.JButton();
         MostrarContraseña = new javax.swing.JCheckBox();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -56,10 +59,25 @@ public class Login extends javax.swing.JFrame{
         jPanel1.setMaximumSize(new java.awt.Dimension(1000, 600));
         jPanel1.setMinimumSize(new java.awt.Dimension(1000, 600));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 600));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-180, 0, 880, 620));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setText("jLabel4");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Book Antiqua", 3, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel1.setText("sistema de confianza");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, -1, 80));
+
+        jLabel6.setFont(new java.awt.Font("Book Antiqua", 3, 36)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel6.setText("Inicia sesión en tu ");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, -1, 80));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-180, 0, 870, 660));
 
         PanelIngresar.setBackground(new java.awt.Color(255, 255, 255));
-        PanelIngresar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.lightGray, null, null));
+        PanelIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         PanelIngresar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Book Antiqua", 3, 24)); // NOI18N
@@ -81,11 +99,6 @@ public class Login extends javax.swing.JFrame{
         });
         PanelIngresar.add(txtIngresarUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 192, -1));
 
-        jLabel1.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setText("Ingrese su contraseña");
-        PanelIngresar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, -1, -1));
-
         txtContrasenaUser.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
         txtContrasenaUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +108,7 @@ public class Login extends javax.swing.JFrame{
         PanelIngresar.add(txtContrasenaUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 192, -1));
 
         btnIngresar.setBackground(new java.awt.Color(0, 0, 153));
-        btnIngresar.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        btnIngresar.setFont(new java.awt.Font("Book Antiqua", 1, 14)); // NOI18N
         btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
         btnIngresar.setText("Ingresar");
         btnIngresar.setName("btnIngresar"); // NOI18N
@@ -104,8 +117,9 @@ public class Login extends javax.swing.JFrame{
                 btnIngresarActionPerformed(evt);
             }
         });
-        PanelIngresar.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 100, 40));
+        PanelIngresar.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 100, 40));
 
+        MostrarContraseña.setBackground(new java.awt.Color(255, 255, 255));
         MostrarContraseña.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
         MostrarContraseña.setText("Mostrar contraseña");
         MostrarContraseña.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +129,12 @@ public class Login extends javax.swing.JFrame{
         });
         PanelIngresar.add(MostrarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, -1, -1));
 
-        getContentPane().add(PanelIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 0, 340, 570));
+        jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel5.setText("Ingrese su contraseña");
+        PanelIngresar.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, -1, -1));
+
+        getContentPane().add(PanelIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, -20, 340, 700));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -229,6 +248,9 @@ public class Login extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField txtContrasenaUser;
     private javax.swing.JTextField txtIngresarUser;

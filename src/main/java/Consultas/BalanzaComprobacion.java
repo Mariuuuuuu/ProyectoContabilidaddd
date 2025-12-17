@@ -183,7 +183,7 @@ public class BalanzaComprobacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnMostrarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTodoActionPerformed
-       DefaultTableModel modelo = (DefaultTableModel) tblBalanza.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) tblBalanza.getModel();
     modelo.setRowCount(0);
 
     double totalDebito = 0;
@@ -196,16 +196,16 @@ public class BalanzaComprobacion extends javax.swing.JFrame {
         while ((linea = br.readLine()) != null) {
             String[] datos = linea.split("\\|");
 
-            String grupo = datos[5]; // Activo, Pasivo, Capital
+            String tipoCuenta = datos[2]; // General o Detalle
 
-            if (!grupo.equalsIgnoreCase("Activo")
-                    && !grupo.equalsIgnoreCase("Pasivo")
-                    && !grupo.equalsIgnoreCase("Capital")) {
-                continue; // saltar otros grupos
+            // SOLO cuentas detalle
+            if (!tipoCuenta.equalsIgnoreCase("Detalle")) {
+                continue;
             }
 
             String codigo = datos[0];
-            String nombre = datos[1];
+            String descripcion = datos[1];
+            String grupo = datos[5];
 
             double debito = Double.parseDouble(datos[8]);
             double credito = Double.parseDouble(datos[9]);
@@ -215,7 +215,7 @@ public class BalanzaComprobacion extends javax.swing.JFrame {
 
             modelo.addRow(new Object[]{
                 codigo,
-                nombre,
+                descripcion,
                 grupo,
                 debito,
                 credito
@@ -226,7 +226,8 @@ public class BalanzaComprobacion extends javax.swing.JFrame {
         txtTotalCredito.setText(String.valueOf(totalCredito));
 
     } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error al cargar la Balanza de Comprobación");
+        JOptionPane.showMessageDialog(this,
+                "Error al cargar la Balanza de Comprobación");
     }
     
     }//GEN-LAST:event_btnMostrarTodoActionPerformed

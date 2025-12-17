@@ -1,10 +1,9 @@
-23|Pago ROsalina|General|1|0112|Activo|14/12/2025|00:45|0.00|0.00|0.00
 1|Activos|General|1||Activo|15/12/2025|01:48|0.00|0.00|0.00
 11|Activos circulantes|General|2|1|Activo|15/12/2025|01:49|0.00|0.00|0.00
 1101|Efectivo en caja|General|3|11|Activo|15/12/2025|01:49|0.00|0.00|0.00
-11011|Caja chica|Detalle|4|1101|Activo|15/12/2025|01:50|2300.00|1000.00|1300.00
+11011|Caja chica|Detalle|4|1101|Activo|15/12/2025|01:50|2300.00|1900.00|1300.00
 1102|Efectivo en bancos|General|3|11|Activo|15/12/2025|01:50|0.00|0.00|0.00
-11021|Banco Popular Dominicano|Detalle|4|1102|Activo|15/12/2025|01:51|1210.00|1600.00|-390.00
+11021|Banco Popular Dominicano|Detalle|4|1102|Activo|15/12/2025|01:51|1210.00|1610.00|-390.00
 11022|Banco BHD|Detalle|4|1102|Activo|15/12/2025|01:51|0.00|0.00|0.00
 11023|Banco Santa Cruz|Detalle|4|1102|Activo|15/12/2025|01:51|0.00|0.00|0.00
 11025|Cuenta de Nómina|Detalle|4|1102|Activo|15/12/2025|01:51|0.00|0.00|0.00
@@ -52,18 +51,18 @@
 4|Ingresos|General|1||Ingreso|15/12/2025|01:51|0.00|0.00|0.00
 41|Ingresos Operacionales|General|2|4|Ingreso|15/12/2025|01:51|0.00|0.00|0.00
 4101|Ventas|General|3|41|Ingreso|15/12/2025|01:51|0.00|0.00|0.00
-41011|Ventas de Contado|Detalle|4|4101|Ingreso|15/12/2025|01:51|800.00|0.00|800.00
-41012|Ventas a Crédito|Detalle|4|4101|Ingreso|15/12/2025|01:51|0.00|1000.00|-1000.00
+41011|Ventas de Contado|Detalle|4|4101|Ingreso|15/12/2025|01:51|0.00|0.00|0.00
+41012|Ventas a Crédito|Detalle|4|4101|Ingreso|15/12/2025|01:51|0.00|0.00|0.00
 42|Otros Ingresos|General|2|4|Ingreso|15/12/2025|01:51|0.00|0.00|0.00
 4201|Ingresos Financieros|General|3|42|Ingreso|15/12/2025|01:51|0.00|0.00|0.00
 42011|Intereses Ganados|Detalle|4|4201|Ingreso|15/12/2025|01:51|0.00|0.00|0.00
 5|Gastos|General|1||Gasto|15/12/2025|01:51|0.00|0.00|0.00
 51|Gastos Operacionales|General|2|5|Gasto|15/12/2025|01:51|0.00|0.00|0.00
 5101|Gastos Administrativos|General|3|51|Gasto|15/12/2025|01:51|0.00|0.00|0.00
-51011|Sueldos y Salarios|Detalle|4|5101|Gasto|15/12/2025|01:51|0.00|800.00|-800.00
+51011|Sueldos y Salarios|Detalle|4|5101|Gasto|15/12/2025|01:51|0.00|0.00|0.00
 51012|Alquiler|Detalle|4|5101|Gasto|15/12/2025|01:51|0.00|0.00|0.00
 51013|Servicios Públicos|Detalle|4|5101|Gasto|15/12/2025|01:51|0.00|0.00|0.00
 52|Gastos de Venta|General|2|5|Gasto|15/12/2025|01:51|0.00|0.00|0.00
 5201|Publicidad y Promoción|Detalle|3|52|Gasto|15/12/2025|01:51|0.00|0.00|0.00
 53|Gastos Financieros|General|2|5|Gasto|15/12/2025|01:51|0.00|0.00|0.00
-5301|Intereses Pagados|Detalle|3|53|Gasto|15/12/2025|01:51|90.00|0.00|90.00
+5301|Intereses Pagados|Detalle|3|53|Gasto|15/12/2025|01:51|0.00|0.00|0.00

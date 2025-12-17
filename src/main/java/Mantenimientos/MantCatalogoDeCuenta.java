@@ -139,6 +139,11 @@ public class MantCatalogoDeCuenta extends javax.swing.JFrame {
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, -1, -1));
 
         txtNroCuenta.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+        txtNroCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNroCuentaActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtNroCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 140, -1));
 
         txtCuentaPadre.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
@@ -374,12 +379,16 @@ try {
             lista.add(linea);
         } else {
             // es la cuenta a eliminar
-            if (!datos[8].equals("0") || !datos[9].equals("0")) {
-                JOptionPane.showMessageDialog(this,
-                        "No se puede eliminar, tiene movimientos");
-                br.close();
-                return;
-            }
+      double debito = Double.parseDouble(datos[8]);
+double credito = Double.parseDouble(datos[9]);
+String tipoCuenta = datos[2]; // General o Detalle
+
+if (tipoCuenta.equals("Detalle") && (debito != 0 || credito != 0)) {
+    JOptionPane.showMessageDialog(this,
+            "No se puede eliminar, la cuenta tiene movimientos");
+    br.close();
+    return;
+}
             // si llega aquí, se elimina (no se guarda)
         }
     }
@@ -409,6 +418,57 @@ try {
     private void btnLimpiar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiar3ActionPerformed
       limpiarCampos();
     }//GEN-LAST:event_btnLimpiar3ActionPerformed
+
+    private void txtNroCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNroCuentaActionPerformed
+       String cuentaBuscada = txtNroCuenta.getText().trim();
+    if (cuentaBuscada.isEmpty()) return;
+
+    File archivo = new File("CatalogoCuenta.txt");
+    if (!archivo.exists()) return;
+
+    try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+
+        String linea;
+        boolean encontrado = false;
+
+        while ((linea = br.readLine()) != null) {
+            String[] datos = linea.split("\\|");
+
+            if (datos.length >= 11 && datos[0].equals(cuentaBuscada)) {
+
+                txtDescripcion.setText(datos[1]);
+                cmbTipo.setSelectedItem(datos[2]);
+                cmbNivel.setSelectedItem(datos[3]);
+                txtCuentaPadre.setText(datos[4]);
+                cmbGrupo.setSelectedItem(datos[5]);
+                txtFecha.setText(datos[6]);
+                txtHora.setText(datos[7]);
+                txtDebito.setText(datos[8]);
+                txtCredito.setText(datos[9]);
+                txtBalance.setText(datos[10]);
+
+                encontrado = true;
+                break;
+            }
+        }
+
+        // si no existe, limpiar (como en usuario)
+        if (!encontrado) {
+            txtDescripcion.setText("");
+            cmbTipo.setSelectedIndex(0);
+            cmbNivel.setSelectedIndex(0);
+            txtCuentaPadre.setText("");
+            cmbGrupo.setSelectedIndex(0);
+            txtDebito.setText("0");
+            txtCredito.setText("0");
+            txtBalance.setText("0");
+        }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this,
+                "Error al buscar la cuenta");
+    }
+    }//GEN-LAST:event_txtNroCuentaActionPerformed
 
     /**
      * @param args the command line arguments
