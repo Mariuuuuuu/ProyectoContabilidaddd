@@ -4,6 +4,12 @@
  */
 package Consultas;
 
+import Presentacion.MenuPrincipal;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author CRISTAL ORTEGA
@@ -29,24 +35,195 @@ public class EstadoGananciasPerdidas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblEstadoResultados = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtResultado = new javax.swing.JTextField();
+        txtTotalIngresos = new javax.swing.JTextField();
+        txtTotalGastos = new javax.swing.JTextField();
+        btnSalir = new javax.swing.JButton();
+        btnMostrar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1010, 600));
         setMinimumSize(new java.awt.Dimension(1010, 600));
-        setPreferredSize(new java.awt.Dimension(1010, 600));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMaximumSize(new java.awt.Dimension(1010, 600));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1010, 600));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1010, 600));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setForeground(new java.awt.Color(204, 204, 255));
+        jPanel3.setFont(new java.awt.Font("Constantia", 2, 14)); // NOI18N
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Book Antiqua", 3, 24)); // NOI18N
+        jLabel1.setText("Estado de ganancias y pérdidas");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 50));
+
+        jPanel4.setBackground(new java.awt.Color(255, 189, 39));
+        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel4.setForeground(new java.awt.Color(204, 204, 255));
+        jPanel4.setFont(new java.awt.Font("Constantia", 2, 14)); // NOI18N
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1010, 10));
+
+        tblEstadoResultados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "No.Cuenta", "Descripción", "Grupo", "Débito", "Crédito"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tblEstadoResultados);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 880, 310));
+
+        jLabel2.setFont(new java.awt.Font("Book Antiqua", 1, 14)); // NOI18N
+        jLabel2.setText("Resultado:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 530, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Book Antiqua", 1, 14)); // NOI18N
+        jLabel3.setText("Total ingresos:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 470, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Book Antiqua", 1, 14)); // NOI18N
+        jLabel4.setText("Total gastos:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, -1, -1));
+
+        txtResultado.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+        jPanel1.add(txtResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, 130, -1));
+
+        txtTotalIngresos.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+        jPanel1.add(txtTotalIngresos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, 130, -1));
+
+        txtTotalGastos.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+        jPanel1.add(txtTotalGastos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, 130, -1));
+
+        btnSalir.setFont(new java.awt.Font("Book Antiqua", 1, 14)); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 480, 120, 40));
+
+        btnMostrar.setFont(new java.awt.Font("Book Antiqua", 1, 14)); // NOI18N
+        btnMostrar.setText("Mostrar ");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 480, 120, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1011, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+
+       MenuPrincipal MP=new MenuPrincipal();
+       MP.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+         DefaultTableModel modelo =
+            (DefaultTableModel) tblEstadoResultados.getModel();
+    modelo.setRowCount(0);
+
+    double totalIngresos = 0;
+    double totalGastos = 0;
+
+    try (BufferedReader br = new BufferedReader(
+            new FileReader("CatalogoCuenta.txt"))) {
+
+        String linea;
+
+        while ((linea = br.readLine()) != null) {
+            String[] datos = linea.split("\\|");
+
+            String grupo = datos[5];
+
+            // SOLO INGRESOS Y GASTOS
+            if (grupo.equalsIgnoreCase("Ingreso")
+                    || grupo.equalsIgnoreCase("Gasto")) {
+
+                String codigo = datos[0];
+                String cuenta = datos[1];
+                String debito = datos[8];
+                String credito = datos[9];
+
+                modelo.addRow(new Object[]{
+                    codigo,
+                    cuenta,
+                    grupo,
+                    debito,
+                    credito
+                });
+
+                double d = Double.parseDouble(debito);
+                double c = Double.parseDouble(credito);
+
+                if (grupo.equalsIgnoreCase("Ingreso")) {
+                    totalIngresos += c;
+                } else {
+                    totalGastos += d;
+                }
+            }
+        }
+
+        txtTotalIngresos.setText(String.format("%.2f", totalIngresos));
+        txtTotalGastos.setText(String.format("%.2f", totalGastos));
+        txtResultado.setText(
+                String.format("%.2f", totalIngresos - totalGastos)
+        );
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this,
+                "Error al generar el Estado de Resultados");
+    }
+    }//GEN-LAST:event_btnMostrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -74,5 +251,19 @@ public class EstadoGananciasPerdidas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMostrar;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblEstadoResultados;
+    private javax.swing.JTextField txtResultado;
+    private javax.swing.JTextField txtTotalGastos;
+    private javax.swing.JTextField txtTotalIngresos;
     // End of variables declaration//GEN-END:variables
 }

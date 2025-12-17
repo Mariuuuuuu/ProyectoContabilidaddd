@@ -62,9 +62,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Mantenimientos = new javax.swing.JMenu();
         Usuarios = new javax.swing.JMenuItem();
         MantCatalogoCuenta = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        CerrarSesion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1010, 600));
         setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(1010, 600));
@@ -156,6 +158,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar2.add(Mantenimientos);
 
+        jMenu1.setText("                                                                                                                                                                                           ");
+        jMenuBar2.add(jMenu1);
+
+        jMenu2.setText("Salir del sistema");
+
+        CerrarSesion.setText("Cerrar sesión");
+        CerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CerrarSesionActionPerformed(evt);
+            }
+        });
+        jMenu2.add(CerrarSesion);
+
+        jMenuBar2.add(jMenu2);
+
         setJMenuBar(jMenuBar2);
 
         pack();
@@ -210,6 +227,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_MantCatalogoCuentaActionPerformed
 
+    private void CerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarSesionActionPerformed
+    this.dispose();
+    
+    
+    }//GEN-LAST:event_CerrarSesionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -238,6 +261,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem BalanzaComprobacion;
     private javax.swing.JMenuItem BalanzaGeneral;
     private javax.swing.JMenuItem CatalogoCuenta;
+    private javax.swing.JMenuItem CerrarSesion;
     private javax.swing.JMenu Consultas;
     private javax.swing.JMenuItem EstadoGananciasPerdidas;
     private javax.swing.JMenuItem MantCatalogoCuenta;
@@ -246,6 +270,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem Transacciones;
     private javax.swing.JMenuItem TransaccionesPorFecha;
     private javax.swing.JMenuItem Usuarios;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

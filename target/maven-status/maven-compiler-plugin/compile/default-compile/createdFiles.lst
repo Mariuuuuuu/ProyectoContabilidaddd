@@ -24,6 +24,7 @@ Movimientos\Transacciones$12.class
 Presentacion\MenuPrincipal$5.class
 Consultas\TransaccionesPorFecha.class
 Mantenimientos\MantUsuario$8.class
+Consultas\EstadoGananciasPerdidas$1.class
 Movimientos\Transacciones$3.class
 Procesos\CierreDiarioPorFechas.class
 Mantenimientos\MantUsuario$5.class
@@ -41,7 +42,9 @@ Presentacion\MenuPrincipal$6.class
 Movimientos\Transacciones$9.class
 Mantenimientos\MantUsuario$11.class
 Movimientos\Transacciones$13.class
+Consultas\EstadoGananciasPerdidas$2.class
 Presentacion\MantCatalogoCuenta.class
+Presentacion\MenuPrincipal$9.class
 Consultas\BalanzaComprobacion$2.class
 Consultas\TransaccionesPorFecha$4.class
 Presentacion\MenuPrincipal$2.class
@@ -69,6 +72,7 @@ Mantenimientos\MantCatalogoDeCuenta$6.class
 Movimientos\Transacciones$1.class
 Consultas\BalanzaComprobacion.class
 Presentacion\Login$2.class
+Consultas\EstadoGananciasPerdidas$3.class
 Mantenimientos\MantUsuario$4.class
 Mantenimientos\MantUsuario$7.class
 Mantenimientos\MantCatalogoDeCuenta$3.class

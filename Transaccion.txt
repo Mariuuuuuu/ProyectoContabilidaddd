@@ -6,3 +6,10 @@
 3|11011|Caja chica|Electricidad|500|0
 4|11021|Banco Popular Dominicano|Camion|0|100
 4|11021|Banco Popular Dominicano|Camilla|100|0
+5|21042|Servicios por Pagar|Pago recarga|0|500
+5|31011|Aportes de los Socios||500|0
+6|51011|Sueldos y Salarios||0|800
+6|41011|Ventas de Contado||800|0
+6|5301|Intereses Pagados||90|0
+6|41012|Ventas a Crédito||0|1000
+6|11021|Banco Popular Dominicano||910|0
